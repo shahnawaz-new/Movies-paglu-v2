@@ -12,7 +12,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 TOKEN = os.getenv("8729447640:AAEn47uvLdal9qhLkvHMGOLpx2-p_xmmDLw")
 
 if not TOKEN:
-    raise ValueError("BOT_TOKEN environment variable not found!")
+    raise ValueError("BOT_TOKEN")
 
 # ---------------- BOT ---------------- #
 
