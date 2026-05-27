@@ -9,8 +9,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 # ---------------- TOKEN ---------------- #
 
-TOKEN = os.getenv("8729447640:AAEn47uvLdal9qhLkvHMGOLpx2-p_xmmDLw")
-
+TOKEN = os.getenv("BOT_TOKEN")
 if not TOKEN:
     raise ValueError("BOT_TOKEN")
 
