@@ -10,8 +10,9 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 # ---------------- TOKEN ---------------- #
 
 TOKEN = os.getenv("BOT_TOKEN")
+
 if not TOKEN:
-    raise ValueError("BOT_TOKEN")
+    raise ValueError("BOT_TOKEN environment variable not found!")
 
 # ---------------- BOT ---------------- #
 
@@ -82,7 +83,7 @@ async def start_handler(message: types.Message):
         )
     )
 
-# ---------------- LANGUAGE SELECT ---------------- #
+# ---------------- HINGLISH ---------------- #
 
 @dp.callback_query(F.data == "lang_hinglish")
 async def hinglish_selected(callback: types.CallbackQuery):
@@ -130,6 +131,66 @@ search, stream aur download kar sakte ho 💫
 
     await callback.answer(
         "Language set to Hinglish 🥺"
+    )
+
+    asyncio.create_task(
+        auto_delete(
+            callback.message.chat.id,
+            bot_msg_id=sent.message_id
+        )
+    )
+
+# ---------------- HINDI ---------------- #
+
+@dp.callback_query(F.data == "lang_hi")
+async def hindi_selected(callback: types.CallbackQuery):
+
+    text = """
+🍿 <b>नमस्ते! मैं Nobi द्वारा बनाया गया नया बॉट हूँ 🥺✨</b>
+
+यहाँ आप लगभग सभी OTT की:
+🎬 Movies
+📺 Series
+🍥 Anime
+🇰🇷 K-Drama
+
+search, stream और download कर सकते हैं 💫
+"""
+
+    sent = await callback.message.answer(text)
+
+    await callback.answer(
+        "भाषा हिन्दी सेट हो गई 🥺"
+    )
+
+    asyncio.create_task(
+        auto_delete(
+            callback.message.chat.id,
+            bot_msg_id=sent.message_id
+        )
+    )
+
+# ---------------- ENGLISH ---------------- #
+
+@dp.callback_query(F.data == "lang_en")
+async def english_selected(callback: types.CallbackQuery):
+
+    text = """
+🍿 <b>Hello! I am a new bot created by Nobi 🥺✨</b>
+
+Here you can search, stream and download:
+🎬 Movies
+📺 Series
+🍥 Anime
+🇰🇷 K-Drama
+
+from almost every OTT platform 💫
+"""
+
+    sent = await callback.message.answer(text)
+
+    await callback.answer(
+        "Language set to English 🥺"
     )
 
     asyncio.create_task(
